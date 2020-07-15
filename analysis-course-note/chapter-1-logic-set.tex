@@ -1,0 +1,115 @@
+
+\section{数理逻辑与集合论}
+这一章作为高等数学的基础，是非常重要的。请至少做出80\%的习题，保证对后面章节而言能有充分的知识储备。
+
+\subsection{命题}
+maki注：一个命题要么是真的，要么是假的。命题不能同时是真的和同时是假的，或者同时不真和同时不假。
+
+证明$\neg p \iff$ 证明 $p$。
+
+证伪$\neg p \iff$ 证明 $p$。
+
+$p$是真命题 $\iff$ $p$。
+
+$p$是假命题 $\iff$ $\neg p$。此时我们也可以说非$p$是真的（$\neg p \iff T$）。
+
+\subsection{与或非和二元、一元运算}
+
+我们使用真值表演示n元运算的结果。
+真值表通过枚举n元运算中每一个变量的值（即T/F），演示每一组值经过n元运算后的逻辑结果。
+
+zyc注：二元运算和一元运算并不只包含与或非。你也可以定义自己的n元运算，当且仅当以任何方式定义运算的完整真值表。
+
+\subsubsection{与}
+
+\begin{table}[H]
+    \begin{tabular}{ll|l}
+    $p$ & $q$   & $p \wedge q$ \\ \hline 
+    T   & T     & T            \\
+    T   & F     & F            \\
+    F   & T     & F            \\
+    F   & F     & F                        
+    \end{tabular}
+\end{table}
+
+\subsubsection{或}
+
+\begin{table}[H]
+    \begin{tabular}{ll|l}
+    $p$ & $q$   & $p \vee q$ \\ \hline 
+    T   & T     & T            \\
+    T   & F     & T            \\
+    F   & T     & T            \\
+    F   & F     & F                        
+    \end{tabular}
+\end{table}
+
+\subsubsection{非}
+
+\begin{table}[H]
+    \begin{tabular}{l|l}
+    $p$ & $\neg p$   \\ \hline 
+    T   & F     \\
+    F   & T                        
+    \end{tabular}
+\end{table}
+
+\subsection{与或非的运算定律}
+
+\subsubsection{交换律}
+
+\begin{equation}
+p \wedge q \iff q \wedge p
+\end{equation}
+
+\begin{equation}
+p \vee q \iff q \vee p
+\end{equation}
+
+\subsubsection{结合律}
+
+\begin{equation}
+    p \wedge (q \wedge r) \iff (p \wedge q) \wedge r
+\end{equation}
+
+\begin{table}[H]
+    \begin{tabular}{lll|l|l|l|l}
+    p & q & r & $q \wedge r$ & $p \wedge (q \wedge r)$ & $p \wedge q$ & $(p \wedge q) \wedge r$ \\ \hline
+    T & T & T & T            & T                       & T            & T                       \\
+    T & T & F & F            & F                       & T            & F                       \\
+    T & F & T & F            & F                       & F            & F                       \\
+    T & F & F & F            & F                       & F            & F                       \\
+    F & T & T & T            & F                       & F            & F                       \\
+    F & T & F & F            & F                       & F            & F                       \\
+    F & F & T & F            & F                       & F            & F                       \\
+    F & F & F & F            & F                       & F            & F                      
+    \end{tabular}
+\end{table}
+
+\begin{equation}
+    p \vee (q \vee r) \iff (p \vee q) \vee r
+\end{equation}
+
+\begin{table}[H]
+    \begin{tabular}{lll|l|l|l|l}
+    p & q & r & $q \vee r$ & $p \vee (q \vee r)$ & $p \vee q$ & $(p \vee q) \vee r$ \\ \hline
+    T & T & T & T            & T                       & T            & T                       \\
+    T & T & F & T            & T                       & T            & T                       \\
+    T & F & T & T            & T                       & T            & T                       \\
+    T & F & F & F            & T                       & T            & T                       \\
+    F & T & T & T            & T                       & T            & T                       \\
+    F & T & F & T            & T                       & T            & T                       \\
+    F & F & T & T            & T                       & F            & T                       \\
+    F & F & F & F            & F                       & F            & F                      
+    \end{tabular}
+\end{table}
+
+\subsubsection{分配律}
+
+maki注：此处类比$a \cdot (b + c) = a \cdot b + a \cdot c$。
+
+\begin{equation}
+    p \wedge (q \vee r) \iff (p \vee q) \wedge (p \vee r)
+\end{equation}
+
+\newpage
