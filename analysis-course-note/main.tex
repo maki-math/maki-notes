@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsfonts, amsmath, amssymb}
+\usepackage{amsthm}
 \usepackage[UTF8]{ctex}
 \usepackage[none]{hyphenat}
 \usepackage{fancyhdr}
@@ -20,6 +21,12 @@
 %\setlength{\parindent}{4em}
 %\setlength{\parskip}{1em}
 \renewcommand{\baselinestretch}{1.5}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{corollary}{引理}[theorem]
+\newtheorem{lemma}[theorem]{定理}
+\newtheorem{example}{例}[section]
+
 
 \begin{document}
 

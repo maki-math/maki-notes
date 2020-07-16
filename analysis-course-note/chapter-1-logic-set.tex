@@ -112,4 +112,139 @@ maki注：此处类比$a \cdot (b + c) = a \cdot b + a \cdot c$。
     p \wedge (q \vee r) \iff (p \vee q) \wedge (p \vee r)
 \end{equation}
 
+\subsection{蕴含和推导}
+
+$\implies$ 实质推导。该符号表示推导的二元运算。
+
+$\implies$ 语义推导 
+
+\begin{table}[H]
+    \begin{tabular}{ll|l}
+    $p$ & $q$   & $p \implies q$ \\ \hline 
+    T   & T     & T            \\
+    T   & F     & F            \\
+    F   & T     & T            \\
+    F   & F     & T                        
+    \end{tabular}
+\end{table}
+
+\begin{theorem}
+    $(p \implies q) \iff (\neg q \implies \neg p)$
+\end{theorem}
+
+
+\begin{proof}
+    使用反证法证明。
+\begin{equation}
+    \begin{split}
+        & (\neg q \implies \neg p) \\
+        \iff & \neg (\neg q) \vee \neg p \\
+        \iff & q \vee \neg p \\
+        \iff & \neg p \vee q \\
+        \iff & (p \implies q)
+    \end{split}
+\end{equation}
+\end{proof}
+
+maki注：反证法 - 若要证明p，可以证伪非p，即假设p为假，则可以推得矛盾，以此证明p不可能为假。
+
+\begin{theorem}
+    $((p \vee q) \implies r) \iff (p \implies r) \wedge (q \implies r)$
+\end{theorem}
+
+\begin{proof}
+左右相等
+\begin{equation}
+    \begin{split}
+        LHS \iff & (\neg (p \vee q)) \vee r \\
+        \iff & (\neg p \wedge \neg q) \vee r \\
+        \iff & (\neg p \vee r) \wedge (\neg q \vee r) \\
+        \iff & (p \implies r) \wedge (q \implies r)
+    \end{split}
+\end{equation}
+\end{proof}
+
+\subsection{存在和所有量词}
+
+$\forall$ 对于所有
+
+\begin{example}
+    $\forall x \in \mathbb{R}. x^2 \ge 0$
+\end{example}
+
+\begin{proof}
+令$x$为实数。$x^2 \ge 0$ 恒成立。证毕。
+\end{proof}
+
+
+\begin{example}
+    $\forall x \in \mathbb{R}. x^2 \ge 0$
+\end{example}
+
+\begin{proof}
+令$x$为实数。$x^2 \ge 0$ 恒成立。证毕。
+\end{proof}
+
+
+\begin{example}
+    $\forall x \in \mathbb{R}. \forall y \in \mathbb{R}. x^2 + y^2 \ge 2xy$
+\end{example}
+
+\begin{proof}
+令$x$为实数。令$y$为实数。通过例1.1，得到$(x-y)^2 \ge 0$.
+\begin{equation}
+    \begin{split}
+        & (x-y)^2 \ge 0 \\
+        \iff & x^2 + y^2 - 2xy \ge 0 \\
+        \iff & x^2 + y^2 \ge 2xy
+    \end{split}
+\end{equation}
+得到$x^2 + y^2 \ge 2xy$，证毕。
+\end{proof}
+
+$\exists$ 存在一个
+
+\begin{example}
+    $\forall x \in \mathbb{R}. x^2 \ge 0$
+\end{example}
+
+\begin{proof}
+令$x$为实数。$x^2 \ge 0$ 恒成立。证毕。
+\end{proof}
+
+\begin{example}
+    $\exists x \in \mathbb{N}_1. \exists y \in \mathbb{N}_1. x + y = 3$
+\end{example}
+
+\begin{proof}
+令$x$为$1$。令$y$为$2$。$x + y = 1 + 2 = 3$。证毕。
+\end{proof}
+
+量词的否定
+
+\begin{equation}
+    \neg (\forall x \in A. p(x)) \iff (\exists x \in A. \neg p(x))
+\end{equation}
+\begin{equation}
+    \neg (\exists x \in A. p(x)) \iff (\forall x \in A. \neg p(x))
+\end{equation}
+
+maki注：量词颠倒，命题取非。
+
+\begin{example}
+    $\neg (\exists x \in A. \exists y \in B. \forall z \in C. p(x, y, z))$
+\end{example}
+
+\begin{proof}
+    \begin{equation}
+        \begin{split}
+            & \neg (\exists x \in A. \exists y \in B. \forall z \in C. p(x, y, z)) \\
+            \iff & \forall x \in A. \neg (\exists y \in B. \forall z \in C. p(x, y, z)) \\
+            \iff & \forall x \in A. \forall y \in B. \neg (\forall z \in C. p(x, y, z)) \\
+            \iff & \forall x \in A. \forall y \in B. \exists z \in C. \neg (p(x, y, z)) 
+        \end{split}
+    \end{equation}
+\end{proof}
+
+
 \newpage
