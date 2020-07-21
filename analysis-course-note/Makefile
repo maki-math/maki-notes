@@ -8,12 +8,12 @@ MAIN = "main.tex"
 .PHONY: build
 build: $(SRC)
 	# Builds the main.tex file to current dir
-	$(CC) -synctex=1 -jobname=$(JOB_NAME) $(MAIN)
+	$(CC) -r .latexmkrc -synctex=1 -jobname=$(JOB_NAME) -g $(MAIN)
 
 .PHONY: clean
 clean:
 	# Clean the auxillary files
-	$(CC) -c -jobname=$(JOB_NAME) $(MAIN)
+	$(CC) -r .latexmkrc -c -jobname=$(JOB_NAME) $(MAIN)
 
 .PHONY: ci
 ci: build clean
