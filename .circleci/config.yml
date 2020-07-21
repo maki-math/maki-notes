@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: mirisbowring/texlive_ctan_full:2019
+    steps:
+      - checkout
+      - run:
+          name: Compile LaTex Documents to PDF
+          command: make ci
+      - persist_to_workspace:
+          root: .
+          paths:
+            - output
+      # - store_artifacts:
+      #     path: output/
+
+  notify:
+      docker:
+        - image: circleci/node:8.17.0
+      steps:
+        - checkout
+        - attach_workspace:
+            at: .
+        - store_artifacts:
+            path: output/
+        - run:
+            name: Comment in GitHub PR with URL to artifact
+            command: npx moxci output/analysis-course-note.pdf -m "Building analysis-course-note.pdf completed successfully"
+
+
+workflows:
+  version: 2
+  build-latex:
+    jobs:
+      - build
+      - notify:
+          requires:
+            - build
