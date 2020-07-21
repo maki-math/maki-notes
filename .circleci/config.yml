@@ -13,7 +13,7 @@ jobs:
       #     paths:
       #       - output
       - store_artifacts:
-        path: output/
+          path: output/
 
   notify:
       docker:
@@ -28,6 +28,7 @@ jobs:
 
 
 workflows:
+  version: 2
   build-latex:
     jobs:
       - build
