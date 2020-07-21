@@ -1,0 +1,36 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: koppor/texlive
+    steps:
+      - checkout
+      - run:
+          name: Compile LaTex Documents to PDF
+          command: make
+      # - persist_to_workspace:
+      #     root: .
+      #     paths:
+      #       - output
+      - store_artifacts:
+        path: output/
+
+  notify:
+      docker:
+        - image: circleci/node:8.17.0
+      steps:
+        - checkout
+        # - attach_workspace:
+        #   at: .
+        - run:
+            name: Comment in GitHub PR with URL to artifact
+            command: npx moxci output/analysis-course-note.pdf -m "Building analysis-course-note.pdf completed successfully"
+
+
+workflows:
+  build-latex:
+    jobs:
+      - build
+      - notify:
+          requires:
+            - build
